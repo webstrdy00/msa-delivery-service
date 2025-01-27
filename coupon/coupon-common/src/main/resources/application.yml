@@ -1,1 +1,3 @@
-spring.application.name=coupon-common
+spring:
+  application:
+    name: coupon-common

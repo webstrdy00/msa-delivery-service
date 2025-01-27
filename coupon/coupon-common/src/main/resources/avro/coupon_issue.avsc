@@ -1,0 +1,16 @@
+// Avro 스키마 정의 파일
+{
+  "namespace": "com.example.coupon.couponcommon.infrastructure.model",  // 패키지 네임스페이스
+  "type": "record",
+  "name": "CouponIssueAvroModel",    // 생성될 클래스명
+  "fields": [
+    {
+      "name": "couponId",  // 쿠폰 식별자
+      "type": "long"
+    },
+    {
+      "name": "userId",  // 사용자 식별자
+      "type": "long"
+    }
+  ]
+}
