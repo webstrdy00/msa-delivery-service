@@ -1,6 +1,6 @@
 package com.example.coupon.couponservice.dataaccess.entity;
 
-import com.example.coupon.couponservice.domain.CouponType;
+import com.example.coupon.couponservice.core.CouponType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

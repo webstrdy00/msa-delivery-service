@@ -4,8 +4,8 @@ import com.example.coupon.couponservice.application.ports.input.CouponApplicatio
 import com.example.coupon.couponservice.application.ports.output.AtomicCouponIssueRepository;
 import com.example.coupon.couponservice.application.ports.output.CouponIssueRequestMessagePublisher;
 import com.example.coupon.couponservice.application.ports.output.CouponRepository;
-import com.example.coupon.couponservice.domain.Coupon;
-import com.example.coupon.couponservice.domain.event.CouponIssueEvent;
+import com.example.coupon.couponservice.core.Coupon;
+import com.example.coupon.couponservice.core.event.CouponIssueEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

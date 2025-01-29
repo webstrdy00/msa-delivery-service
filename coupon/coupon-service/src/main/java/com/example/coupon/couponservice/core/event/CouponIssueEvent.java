@@ -1,4 +1,4 @@
-package com.example.coupon.couponservice.domain.event;
+package com.example.coupon.couponservice.core.event;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,6 @@
 package com.example.coupon.couponservice.application.ports.output;
 
-import com.example.coupon.couponservice.domain.Coupon;
+import com.example.coupon.couponservice.core.Coupon;
 
 import java.util.Optional;
 

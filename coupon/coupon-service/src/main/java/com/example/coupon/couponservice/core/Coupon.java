@@ -1,4 +1,4 @@
-package com.example.coupon.couponservice.domain;
+package com.example.coupon.couponservice.core;
 
 import lombok.Builder;
 import lombok.Getter;

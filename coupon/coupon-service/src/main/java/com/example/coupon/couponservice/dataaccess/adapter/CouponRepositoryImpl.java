@@ -3,7 +3,7 @@ package com.example.coupon.couponservice.dataaccess.adapter;
 import com.example.coupon.couponservice.application.ports.output.CouponRepository;
 import com.example.coupon.couponservice.dataaccess.mapper.CouponDataAccessMapper;
 import com.example.coupon.couponservice.dataaccess.repository.CouponJpaRepository;
-import com.example.coupon.couponservice.domain.Coupon;
+import com.example.coupon.couponservice.core.Coupon;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
