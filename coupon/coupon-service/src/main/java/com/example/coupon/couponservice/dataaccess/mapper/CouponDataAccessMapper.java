@@ -1,7 +1,7 @@
 package com.example.coupon.couponservice.dataaccess.mapper;
 
-import com.example.coupon.couponservice.dataaccess.entity.CouponEntity;
 import com.example.coupon.couponservice.core.Coupon;
+import com.example.coupon.couponservice.dataaccess.entity.CouponEntity;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -29,6 +29,7 @@ public class CouponDataAccessMapper {     // 도메인 객체와 엔티티 간 �
     // 도메인 객체를 엔티티로 변환
     public CouponEntity couponToCouponEntity(Coupon coupon) {
         return CouponEntity.builder()
+                .id(coupon.getId())
                 .title(coupon.getTitle())
                 .couponType(coupon.getCouponType())
                 .totalQuantity(coupon.getTotalQuantity())

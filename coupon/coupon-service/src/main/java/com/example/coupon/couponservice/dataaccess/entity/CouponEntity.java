@@ -38,9 +38,10 @@ public class CouponEntity extends BaseTimeEntity{     // 쿠폰 엔티티 클래
     @Column(nullable = false)
     private int minAvailableAmount;
 
-    @Column(nullable = false)
+    @Column(name = "date_issued_start", nullable = false)
     private LocalDateTime dateIssueStart;
 
-    @Column(nullable = false)
+    @Column(name = "date_issued_end", nullable = false)
     private LocalDateTime dateIssueEnd;
+
 }

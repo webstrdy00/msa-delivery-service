@@ -25,6 +25,7 @@ public class CouponApplicationServiceImpl implements CouponApplicationService { 
         if (!coupon.issuableCoupon()) {
             throw new RuntimeException("Not Issuable Coupon");
         }
+
         // 2. Redis를 통한 동시성 제어
         atomicCouponIssueRepository.issueRequest(couponId, userId, coupon.getTotalQuantity());
 

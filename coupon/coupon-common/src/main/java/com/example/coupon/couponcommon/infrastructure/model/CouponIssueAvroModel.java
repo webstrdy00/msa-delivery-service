@@ -14,374 +14,384 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class CouponIssueAvroModel extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-    private static final long serialVersionUID = 6251362883930963296L;
+  private static final long serialVersionUID = 6251362883930963296L;
 
 
-    public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CouponIssueAvroModel\",\"namespace\":\"com.example.coupon.couponcommon.infrastructure.model\",\"fields\":[{\"name\":\"couponId\",\"type\":\"long\"},{\"name\":\"userId\",\"type\":\"long\"}]}");
-    public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CouponIssueAvroModel\",\"namespace\":\"com.example.coupon.couponcommon.infrastructure.model\",\"fields\":[{\"name\":\"couponId\",\"type\":\"long\"},{\"name\":\"userId\",\"type\":\"long\"}]}");
+  public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-    private static final SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
-    private static final BinaryMessageEncoder<CouponIssueAvroModel> ENCODER =
-            new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<CouponIssueAvroModel> ENCODER =
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
-    private static final BinaryMessageDecoder<CouponIssueAvroModel> DECODER =
-            new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<CouponIssueAvroModel> DECODER =
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
-    /**
-     * Return the BinaryMessageEncoder instance used by this class.
-     * @return the message encoder used by this class
-     */
-    public static BinaryMessageEncoder<CouponIssueAvroModel> getEncoder() {
-        return ENCODER;
+  /**
+   * Return the BinaryMessageEncoder instance used by this class.
+   * @return the message encoder used by this class
+   */
+  public static BinaryMessageEncoder<CouponIssueAvroModel> getEncoder() {
+    return ENCODER;
+  }
+
+  /**
+   * Return the BinaryMessageDecoder instance used by this class.
+   * @return the message decoder used by this class
+   */
+  public static BinaryMessageDecoder<CouponIssueAvroModel> getDecoder() {
+    return DECODER;
+  }
+
+  /**
+   * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
+   * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+   */
+  public static BinaryMessageDecoder<CouponIssueAvroModel> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
+  }
+
+  /**
+   * Serializes this CouponIssueAvroModel to a ByteBuffer.
+   * @return a buffer holding the serialized data for this instance
+   * @throws java.io.IOException if this instance could not be serialized
+   */
+  public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+    return ENCODER.encode(this);
+  }
+
+  /**
+   * Deserializes a CouponIssueAvroModel from a ByteBuffer.
+   * @param b a byte buffer holding serialized data for an instance of this class
+   * @return a CouponIssueAvroModel instance decoded from the given buffer
+   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
+   */
+  public static CouponIssueAvroModel fromByteBuffer(
+      java.nio.ByteBuffer b) throws java.io.IOException {
+    return DECODER.decode(b);
+  }
+
+  private long couponId;
+  private long userId;
+
+  /**
+   * Default constructor.  Note that this does not initialize fields
+   * to their default values from the schema.  If that is desired then
+   * one should use <code>newBuilder()</code>.
+   */
+  public CouponIssueAvroModel() {}
+
+  /**
+   * All-args constructor.
+   * @param couponId The new value for couponId
+   * @param userId The new value for userId
+   */
+  public CouponIssueAvroModel(java.lang.Long couponId, java.lang.Long userId) {
+    this.couponId = couponId;
+    this.userId = userId;
+  }
+
+  @Override
+  public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
+  public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
+  // Used by DatumWriter.  Applications should not call.
+  @Override
+  public java.lang.Object get(int field$) {
+    switch (field$) {
+    case 0: return couponId;
+    case 1: return userId;
+    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
+  }
 
-    /**
-     * Return the BinaryMessageDecoder instance used by this class.
-     * @return the message decoder used by this class
-     */
-    public static BinaryMessageDecoder<CouponIssueAvroModel> getDecoder() {
-        return DECODER;
+  // Used by DatumReader.  Applications should not call.
+  @Override
+  @SuppressWarnings(value="unchecked")
+  public void put(int field$, java.lang.Object value$) {
+    switch (field$) {
+    case 0: couponId = (java.lang.Long)value$; break;
+    case 1: userId = (java.lang.Long)value$; break;
+    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
+  }
 
-    /**
-     * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
-     * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
-     * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
-     */
-    public static BinaryMessageDecoder<CouponIssueAvroModel> createDecoder(SchemaStore resolver) {
-        return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
-    }
+  /**
+   * Gets the value of the 'couponId' field.
+   * @return The value of the 'couponId' field.
+   */
+  public long getCouponId() {
+    return couponId;
+  }
 
-    /**
-     * Serializes this CouponIssueAvroModel to a ByteBuffer.
-     * @return a buffer holding the serialized data for this instance
-     * @throws java.io.IOException if this instance could not be serialized
-     */
-    public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
-        return ENCODER.encode(this);
-    }
 
-    /**
-     * Deserializes a CouponIssueAvroModel from a ByteBuffer.
-     * @param b a byte buffer holding serialized data for an instance of this class
-     * @return a CouponIssueAvroModel instance decoded from the given buffer
-     * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
-     */
-    public static CouponIssueAvroModel fromByteBuffer(
-            java.nio.ByteBuffer b) throws java.io.IOException {
-        return DECODER.decode(b);
+  /**
+   * Sets the value of the 'couponId' field.
+   * @param value the value to set.
+   */
+  public void setCouponId(long value) {
+    this.couponId = value;
+  }
+
+  /**
+   * Gets the value of the 'userId' field.
+   * @return The value of the 'userId' field.
+   */
+  public long getUserId() {
+    return userId;
+  }
+
+
+  /**
+   * Sets the value of the 'userId' field.
+   * @param value the value to set.
+   */
+  public void setUserId(long value) {
+    this.userId = value;
+  }
+
+  /**
+   * Creates a new CouponIssueAvroModel RecordBuilder.
+   * @return A new CouponIssueAvroModel RecordBuilder
+   */
+  public static com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder newBuilder() {
+    return new com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder();
+  }
+
+  /**
+   * Creates a new CouponIssueAvroModel RecordBuilder by copying an existing Builder.
+   * @param other The existing builder to copy.
+   * @return A new CouponIssueAvroModel RecordBuilder
+   */
+  public static com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder newBuilder(com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder other) {
+    if (other == null) {
+      return new com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder();
+    } else {
+      return new com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder(other);
     }
+  }
+
+  /**
+   * Creates a new CouponIssueAvroModel RecordBuilder by copying an existing CouponIssueAvroModel instance.
+   * @param other The existing instance to copy.
+   * @return A new CouponIssueAvroModel RecordBuilder
+   */
+  public static com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder newBuilder(com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel other) {
+    if (other == null) {
+      return new com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder();
+    } else {
+      return new com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder(other);
+    }
+  }
+
+  /**
+   * RecordBuilder for CouponIssueAvroModel instances.
+   */
+  @org.apache.avro.specific.AvroGenerated
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<CouponIssueAvroModel>
+    implements org.apache.avro.data.RecordBuilder<CouponIssueAvroModel> {
 
     private long couponId;
     private long userId;
 
+    /** Creates a new Builder */
+    private Builder() {
+      super(SCHEMA$, MODEL$);
+    }
+
     /**
-     * Default constructor.  Note that this does not initialize fields
-     * to their default values from the schema.  If that is desired then
-     * one should use <code>newBuilder()</code>.
+     * Creates a Builder by copying an existing Builder.
+     * @param other The existing Builder to copy.
      */
-    public CouponIssueAvroModel() {}
-
-    /**
-     * All-args constructor.
-     * @param couponId The new value for couponId
-     * @param userId The new value for userId
-     */
-    public CouponIssueAvroModel(java.lang.Long couponId, java.lang.Long userId) {
-        this.couponId = couponId;
-        this.userId = userId;
-    }
-
-    @Override
-    public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
-
-    @Override
-    public org.apache.avro.Schema getSchema() { return SCHEMA$; }
-
-    // Used by DatumWriter.  Applications should not call.
-    @Override
-    public java.lang.Object get(int field$) {
-        switch (field$) {
-            case 0: return couponId;
-            case 1: return userId;
-            default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
-        }
-    }
-
-    // Used by DatumReader.  Applications should not call.
-    @Override
-    @SuppressWarnings(value="unchecked")
-    public void put(int field$, java.lang.Object value$) {
-        switch (field$) {
-            case 0: couponId = (java.lang.Long)value$; break;
-            case 1: userId = (java.lang.Long)value$; break;
-            default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
-        }
+    private Builder(com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder other) {
+      super(other);
+      if (isValidValue(fields()[0], other.couponId)) {
+        this.couponId = data().deepCopy(fields()[0].schema(), other.couponId);
+        fieldSetFlags()[0] = other.fieldSetFlags()[0];
+      }
+      if (isValidValue(fields()[1], other.userId)) {
+        this.userId = data().deepCopy(fields()[1].schema(), other.userId);
+        fieldSetFlags()[1] = other.fieldSetFlags()[1];
+      }
     }
 
     /**
-     * Gets the value of the 'couponId' field.
-     * @return The value of the 'couponId' field.
-     */
-    public long getCouponId() {
-        return couponId;
-    }
-
-
-    /**
-     * Sets the value of the 'couponId' field.
-     * @param value the value to set.
-     */
-    public void setCouponId(long value) {
-        this.couponId = value;
-    }
-
-    /**
-     * Gets the value of the 'userId' field.
-     * @return The value of the 'userId' field.
-     */
-    public long getUserId() {
-        return userId;
-    }
-
-
-    /**
-     * Sets the value of the 'userId' field.
-     * @param value the value to set.
-     */
-    public void setUserId(long value) {
-        this.userId = value;
-    }
-
-    /**
-     * Creates a new CouponIssueAvroModel RecordBuilder.
-     * @return A new CouponIssueAvroModel RecordBuilder
-     */
-    public static com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder newBuilder() {
-        return new com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder();
-    }
-
-    /**
-     * Creates a new CouponIssueAvroModel RecordBuilder by copying an existing Builder.
-     * @param other The existing builder to copy.
-     * @return A new CouponIssueAvroModel RecordBuilder
-     */
-    public static com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder newBuilder(com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder other) {
-        if (other == null) {
-            return new com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder();
-        } else {
-            return new com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder(other);
-        }
-    }
-
-    /**
-     * Creates a new CouponIssueAvroModel RecordBuilder by copying an existing CouponIssueAvroModel instance.
+     * Creates a Builder by copying an existing CouponIssueAvroModel instance
      * @param other The existing instance to copy.
-     * @return A new CouponIssueAvroModel RecordBuilder
      */
-    public static com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder newBuilder(com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel other) {
-        if (other == null) {
-            return new com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder();
-        } else {
-            return new com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder(other);
-        }
+    private Builder(com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel other) {
+      super(SCHEMA$, MODEL$);
+      if (isValidValue(fields()[0], other.couponId)) {
+        this.couponId = data().deepCopy(fields()[0].schema(), other.couponId);
+        fieldSetFlags()[0] = true;
+      }
+      if (isValidValue(fields()[1], other.userId)) {
+        this.userId = data().deepCopy(fields()[1].schema(), other.userId);
+        fieldSetFlags()[1] = true;
+      }
     }
 
     /**
-     * RecordBuilder for CouponIssueAvroModel instances.
-     */
-    @org.apache.avro.specific.AvroGenerated
-    public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<CouponIssueAvroModel>
-            implements org.apache.avro.data.RecordBuilder<CouponIssueAvroModel> {
-
-        private long couponId;
-        private long userId;
-
-        /** Creates a new Builder */
-        private Builder() {
-            super(SCHEMA$, MODEL$);
-        }
-
-        /**
-         * Creates a Builder by copying an existing Builder.
-         * @param other The existing Builder to copy.
-         */
-        private Builder(com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder other) {
-            super(other);
-            if (isValidValue(fields()[0], other.couponId)) {
-                this.couponId = data().deepCopy(fields()[0].schema(), other.couponId);
-                fieldSetFlags()[0] = other.fieldSetFlags()[0];
-            }
-            if (isValidValue(fields()[1], other.userId)) {
-                this.userId = data().deepCopy(fields()[1].schema(), other.userId);
-                fieldSetFlags()[1] = other.fieldSetFlags()[1];
-            }
-        }
-
-        /**
-         * Creates a Builder by copying an existing CouponIssueAvroModel instance
-         * @param other The existing instance to copy.
-         */
-        private Builder(com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel other) {
-            super(SCHEMA$, MODEL$);
-            if (isValidValue(fields()[0], other.couponId)) {
-                this.couponId = data().deepCopy(fields()[0].schema(), other.couponId);
-                fieldSetFlags()[0] = true;
-            }
-            if (isValidValue(fields()[1], other.userId)) {
-                this.userId = data().deepCopy(fields()[1].schema(), other.userId);
-                fieldSetFlags()[1] = true;
-            }
-        }
-
-        /**
-         * Gets the value of the 'couponId' field.
-         * @return The value.
-         */
-        public long getCouponId() {
-            return couponId;
-        }
-
-
-        /**
-         * Sets the value of the 'couponId' field.
-         * @param value The value of 'couponId'.
-         * @return This builder.
-         */
-        public com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder setCouponId(long value) {
-            validate(fields()[0], value);
-            this.couponId = value;
-            fieldSetFlags()[0] = true;
-            return this;
-        }
-
-        /**
-         * Checks whether the 'couponId' field has been set.
-         * @return True if the 'couponId' field has been set, false otherwise.
-         */
-        public boolean hasCouponId() {
-            return fieldSetFlags()[0];
-        }
-
-
-        /**
-         * Clears the value of the 'couponId' field.
-         * @return This builder.
-         */
-        public com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder clearCouponId() {
-            fieldSetFlags()[0] = false;
-            return this;
-        }
-
-        /**
-         * Gets the value of the 'userId' field.
-         * @return The value.
-         */
-        public long getUserId() {
-            return userId;
-        }
-
-
-        /**
-         * Sets the value of the 'userId' field.
-         * @param value The value of 'userId'.
-         * @return This builder.
-         */
-        public com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder setUserId(long value) {
-            validate(fields()[1], value);
-            this.userId = value;
-            fieldSetFlags()[1] = true;
-            return this;
-        }
-
-        /**
-         * Checks whether the 'userId' field has been set.
-         * @return True if the 'userId' field has been set, false otherwise.
-         */
-        public boolean hasUserId() {
-            return fieldSetFlags()[1];
-        }
-
-
-        /**
-         * Clears the value of the 'userId' field.
-         * @return This builder.
-         */
-        public com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder clearUserId() {
-            fieldSetFlags()[1] = false;
-            return this;
-        }
-
-        @Override
-        @SuppressWarnings("unchecked")
-        public CouponIssueAvroModel build() {
-            try {
-                CouponIssueAvroModel record = new CouponIssueAvroModel();
-                record.couponId = fieldSetFlags()[0] ? this.couponId : (java.lang.Long) defaultValue(fields()[0]);
-                record.userId = fieldSetFlags()[1] ? this.userId : (java.lang.Long) defaultValue(fields()[1]);
-                return record;
-            } catch (org.apache.avro.AvroMissingFieldException e) {
-                throw e;
-            } catch (java.lang.Exception e) {
-                throw new org.apache.avro.AvroRuntimeException(e);
-            }
-        }
+      * Gets the value of the 'couponId' field.
+      * @return The value.
+      */
+    public long getCouponId() {
+      return couponId;
     }
 
+
+    /**
+      * Sets the value of the 'couponId' field.
+      * @param value The value of 'couponId'.
+      * @return This builder.
+      */
+    public com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder setCouponId(long value) {
+      validate(fields()[0], value);
+      this.couponId = value;
+      fieldSetFlags()[0] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'couponId' field has been set.
+      * @return True if the 'couponId' field has been set, false otherwise.
+      */
+    public boolean hasCouponId() {
+      return fieldSetFlags()[0];
+    }
+
+
+    /**
+      * Clears the value of the 'couponId' field.
+      * @return This builder.
+      */
+    public com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder clearCouponId() {
+      fieldSetFlags()[0] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'userId' field.
+      * @return The value.
+      */
+    public long getUserId() {
+      return userId;
+    }
+
+
+    /**
+      * Sets the value of the 'userId' field.
+      * @param value The value of 'userId'.
+      * @return This builder.
+      */
+    public com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder setUserId(long value) {
+      validate(fields()[1], value);
+      this.userId = value;
+      fieldSetFlags()[1] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'userId' field has been set.
+      * @return True if the 'userId' field has been set, false otherwise.
+      */
+    public boolean hasUserId() {
+      return fieldSetFlags()[1];
+    }
+
+
+    /**
+      * Clears the value of the 'userId' field.
+      * @return This builder.
+      */
+    public com.example.coupon.couponcommon.infrastructure.model.CouponIssueAvroModel.Builder clearUserId() {
+      fieldSetFlags()[1] = false;
+      return this;
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
-    private static final org.apache.avro.io.DatumWriter<CouponIssueAvroModel>
-            WRITER$ = (org.apache.avro.io.DatumWriter<CouponIssueAvroModel>)MODEL$.createDatumWriter(SCHEMA$);
-
-    @Override public void writeExternal(java.io.ObjectOutput out)
-            throws java.io.IOException {
-        WRITER$.write(this, SpecificData.getEncoder(out));
+    public CouponIssueAvroModel build() {
+      try {
+        CouponIssueAvroModel record = new CouponIssueAvroModel();
+        record.couponId = fieldSetFlags()[0] ? this.couponId : (java.lang.Long) defaultValue(fields()[0]);
+        record.userId = fieldSetFlags()[1] ? this.userId : (java.lang.Long) defaultValue(fields()[1]);
+        return record;
+      } catch (org.apache.avro.AvroMissingFieldException e) {
+        throw e;
+      } catch (java.lang.Exception e) {
+        throw new org.apache.avro.AvroRuntimeException(e);
+      }
     }
+  }
 
-    @SuppressWarnings("unchecked")
-    private static final org.apache.avro.io.DatumReader<CouponIssueAvroModel>
-            READER$ = (org.apache.avro.io.DatumReader<CouponIssueAvroModel>)MODEL$.createDatumReader(SCHEMA$);
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumWriter<CouponIssueAvroModel>
+    WRITER$ = (org.apache.avro.io.DatumWriter<CouponIssueAvroModel>)MODEL$.createDatumWriter(SCHEMA$);
 
-    @Override public void readExternal(java.io.ObjectInput in)
-            throws java.io.IOException {
-        READER$.read(this, SpecificData.getDecoder(in));
-    }
+  @Override public void writeExternal(java.io.ObjectOutput out)
+    throws java.io.IOException {
+    WRITER$.write(this, SpecificData.getEncoder(out));
+  }
 
-    @Override protected boolean hasCustomCoders() { return true; }
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumReader<CouponIssueAvroModel>
+    READER$ = (org.apache.avro.io.DatumReader<CouponIssueAvroModel>)MODEL$.createDatumReader(SCHEMA$);
 
-    @Override public void customEncode(org.apache.avro.io.Encoder out)
-            throws java.io.IOException
-    {
-        out.writeLong(this.couponId);
+  @Override public void readExternal(java.io.ObjectInput in)
+    throws java.io.IOException {
+    READER$.read(this, SpecificData.getDecoder(in));
+  }
 
-        out.writeLong(this.userId);
+  @Override protected boolean hasCustomCoders() { return true; }
 
-    }
+  @Override public void customEncode(org.apache.avro.io.Encoder out)
+    throws java.io.IOException
+  {
+    out.writeLong(this.couponId);
 
-    @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
-            throws java.io.IOException
-    {
-        org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
-        if (fieldOrder == null) {
-            this.couponId = in.readLong();
+    out.writeLong(this.userId);
 
-            this.userId = in.readLong();
+  }
 
-        } else {
-            for (int i = 0; i < 2; i++) {
-                switch (fieldOrder[i].pos()) {
-                    case 0:
-                        this.couponId = in.readLong();
-                        break;
+  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
+    throws java.io.IOException
+  {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      this.couponId = in.readLong();
 
-                    case 1:
-                        this.userId = in.readLong();
-                        break;
+      this.userId = in.readLong();
 
-                    default:
-                        throw new java.io.IOException("Corrupt ResolvingDecoder.");
-                }
-            }
+    } else {
+      for (int i = 0; i < 2; i++) {
+        switch (fieldOrder[i].pos()) {
+        case 0:
+          this.couponId = in.readLong();
+          break;
+
+        case 1:
+          this.userId = in.readLong();
+          break;
+
+        default:
+          throw new java.io.IOException("Corrupt ResolvingDecoder.");
         }
+      }
     }
+  }
 }
+
+
+
+
+
+
+
+
+
+

@@ -6,4 +6,5 @@ public class KafkaConstants {
 
     // 쿠폰 발급 요청을 처리하는 Kafka 토픽명
     public static final String COUPON_ISSUE_TOPIC = "coupon_request";
+    public static final String COUPON_ISSUED = "coupon_issued";
 }
