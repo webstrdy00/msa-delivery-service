@@ -1,1 +1,3 @@
-spring.application.name=stock-service
+spring:
+  application:
+    name: stock-service
