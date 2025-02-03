@@ -7,6 +7,8 @@ import com.example.stock.stockservice.dataaccess.repository.OrderJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Repository
 public class OrderRepositoryImpl implements OrderRepository {  // 도메인 모델 Repository 구현체
@@ -22,5 +24,12 @@ public class OrderRepositoryImpl implements OrderRepository {  // 도메인 모�
                         mapper.orderToOrderEntity(order)
                 )
         );
+    }
+
+    // ID로 주문 조회 메서드
+    @Override
+    public Optional<Order> findById(Long id) {
+        return orderJpaRepository.findById(id)
+                .map(mapper::orderEntityToOrder);
     }
 }

@@ -12,7 +12,7 @@ public class Order {   // 주문 정보를 관리하는 도메인 클래스
     private Long id;    // 주문 고유 식별자
     private UUID productId; // 주문한 상품 ID
     private int quantity;   // 주문 수량
-    private OrderStatus orderStatus;    // 주문 ㅅ ㅏㅇ태
+    private OrderStatus orderStatus;    // 주문 상태
 
     // 주문 상태 업데이트하는 메서드
     public Order updateStatus(OrderStatus status) {
