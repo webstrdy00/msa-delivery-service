@@ -13,8 +13,7 @@ public interface StockJpaRepository extends JpaRepository<StockEntity, UUID> {  
     // 동시성을 고려하여 재고가 충분한 경우에만 수량을 감소
     @Modifying
     @Query("UPDATE StockEntity s " +
-            "SET s.availableQuantity = s.availableQuantity - :quantity " +
-            "WHERE s.productId = :productId " +
-            "AND s.availableQuantity - :quantity >= 0 ")
+            "SET s.availableQuantity = :quantity " +    // 감소량이 아닌 최종 수량으로 설정
+            "WHERE s.productId = :productId")
     int decreaseQuantity(@Param("productId") UUID productId, @Param("quantity") int quantity);
 }

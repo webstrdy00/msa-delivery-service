@@ -16,6 +16,6 @@ public class Stock {   // 재고 관리 도메인 클래스
 
     // 요청된 수량만큼 구매 가능한지 확인하는 메서드
     public boolean isAvailableToBuy(int quantity) {
-        return availableQuantity > quantity;
+        return availableQuantity - quantity >= 0;   // 음수 재고 방지
     }
 }

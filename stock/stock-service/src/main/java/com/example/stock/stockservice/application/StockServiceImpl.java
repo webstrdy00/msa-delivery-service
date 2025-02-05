@@ -1,12 +1,11 @@
 package com.example.stock.stockservice.application;
 
+import com.example.stock.common.command.StockBuyCommand;
 import com.example.stock.stockservice.application.ports.input.StockService;
 import com.example.stock.stockservice.application.ports.input.web.OrderStatusCommand;
 import com.example.stock.stockservice.application.ports.input.web.OrderStatusResponse;
-import com.example.stock.stockservice.application.ports.input.web.StockBuyCommand;
 import com.example.stock.stockservice.core.Order;
 import com.example.stock.stockservice.core.Stock;
-import com.example.stock.stockservice.core.event.StockBuyEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,10 +24,9 @@ public class StockServiceImpl implements StockService {  // 재고 관련 비즈
 
     // 상품 구매 처리 메서드
     @Override
-    public Order buy(StockBuyCommand command) {
-        // TODO : Kafka Messaging
+    public Order buy(StockBuyCommand command) { // StockBuyEvent 대신 StockBuyCommand 직접 사용으로 변경
         return stockServiceHelper.buy(
-                new StockBuyEvent(
+                new StockBuyCommand(
                         command.productId(),
                         command.quantity()
                 )

@@ -13,6 +13,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Repository
 public class StockRepositoryImpl implements StockRepository {   // 도메인 모델 repository 구현체
+    private static final int ONLY_ONE_AFFECTED_ROW = 1; // 상수로 업데이트 성공 기준 정의
 
     private final StockJpaRepository stockJpaRepository;
     private final StockDataAccessMapper mapper;
@@ -34,8 +35,9 @@ public class StockRepositoryImpl implements StockRepository {   // 도메인 모
 
     // 재고 수량을 감소시키는 매서드
     @Override
+    // TODO : Optimistic Locking
     public boolean decreaseQuantity(UUID productId, int quantity) {
         return stockJpaRepository.decreaseQuantity(productId, quantity)
-                == 1;
+                == ONLY_ONE_AFFECTED_ROW;
     }
 }
