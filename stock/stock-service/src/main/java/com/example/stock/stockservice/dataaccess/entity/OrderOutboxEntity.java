@@ -1,7 +1,9 @@
 package com.example.stock.stockservice.dataaccess.entity;
 
+import com.example.stock.common.infrastructure.outbox.OutboxStatus;
 import com.example.stock.stockservice.core.enums.OrderStatus;
 import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,10 +16,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class OrderEntity {  // 주문 정보 엔티티 클래스
+public class OrderOutboxEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Long orderId;
 
     private Long userId;
 
@@ -27,4 +31,7 @@ public class OrderEntity {  // 주문 정보 엔티티 클래스
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
+
+    @Enumerated(EnumType.STRING)
+    private OutboxStatus outboxStatus;
 }

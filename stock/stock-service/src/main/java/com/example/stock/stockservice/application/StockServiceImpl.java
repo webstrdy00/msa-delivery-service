@@ -28,6 +28,7 @@ public class StockServiceImpl implements StockService {  // 재고 관련 비즈
         return stockServiceHelper.buy(
                 new StockBuyCommand(
                         command.productId(),
+                        command.userId(),
                         command.quantity()
                 )
         );

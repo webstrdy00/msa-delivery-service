@@ -2,7 +2,9 @@ package com.example.stock.stockservice.dataaccess.mapper;
 
 import com.example.stock.stockservice.core.Order;
 import com.example.stock.stockservice.core.Stock;
+import com.example.stock.stockservice.core.outbox.OrderOutboxMessage;
 import com.example.stock.stockservice.dataaccess.entity.OrderEntity;
+import com.example.stock.stockservice.dataaccess.entity.OrderOutboxEntity;
 import com.example.stock.stockservice.dataaccess.entity.StockEntity;
 import org.springframework.stereotype.Component;
 
@@ -48,6 +50,31 @@ public class StockDataAccessMapper {   // 엔티티와 도메인 객체 간의 �
                 .productId(order.getProductId())
                 .quantity(order.getQuantity())
                 .orderStatus(order.getOrderStatus())
+                .build();
+    }
+
+    // OrderOutboxMessage를 엔티티로 변환
+    public OrderOutboxEntity orderOutboxMessageToOrderOutboxEntity(OrderOutboxMessage orderOutboxMessage) {
+        return OrderOutboxEntity.builder()
+                .orderId(orderOutboxMessage.getOrderId())
+                .userId(orderOutboxMessage.getUserId())
+                .productId(orderOutboxMessage.getProductId())
+                .quantity(orderOutboxMessage.getQuantity())
+                .orderStatus(orderOutboxMessage.getOrderStatus())
+                .outboxStatus(orderOutboxMessage.getOutboxStatus())
+                .build();
+    }
+
+    // OrderOutboxEntity를 메시지 객체로 변환
+    public OrderOutboxMessage orderOutboxEntityToOrderOutBoxMessage(OrderOutboxEntity orderOutboxEntity) {
+        return OrderOutboxMessage.builder()
+                .id(orderOutboxEntity.getId())
+                .orderId(orderOutboxEntity.getOrderId())
+                .userId(orderOutboxEntity.getUserId())
+                .productId(orderOutboxEntity.getProductId())
+                .quantity(orderOutboxEntity.getQuantity())
+                .orderStatus(orderOutboxEntity.getOrderStatus())
+                .outboxStatus(orderOutboxEntity.getOutboxStatus())
                 .build();
     }
 }

@@ -10,6 +10,7 @@ import java.util.UUID;
 @Builder
 public class Order {   // 주문 정보를 관리하는 도메인 클래스
     private Long id;    // 주문 고유 식별자
+    private Long userId; // 유저 ID
     private UUID productId; // 주문한 상품 ID
     private int quantity;   // 주문 수량
     private OrderStatus orderStatus;    // 주문 상태
