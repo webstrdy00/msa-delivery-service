@@ -3,7 +3,7 @@ package com.example.stock.stockservice.application;
 import lombok.RequiredArgsConstructor;
 
 //@EnableScheduling
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 //@Component
 public class OrderOutboxScheduler {
 

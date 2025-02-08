@@ -36,9 +36,11 @@ public class StockDataAccessMapper {   // 엔티티와 도메인 객체 간의 �
     // OrderEntity를 Order 도메인 모델로 변환하는 메서드
     public Order orderEntityToOrder(OrderEntity order) {
         return Order.builder()
+                .id(order.getId())
                 .productId(order.getProductId())
                 .quantity(order.getQuantity())
                 .orderStatus(order.getOrderStatus())
+                .version(order.getVersion())
                 .build();
     }
 
@@ -50,6 +52,7 @@ public class StockDataAccessMapper {   // 엔티티와 도메인 객체 간의 �
                 .productId(order.getProductId())
                 .quantity(order.getQuantity())
                 .orderStatus(order.getOrderStatus())
+                .version(order.getVersion())
                 .build();
     }
 

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Repository
@@ -28,7 +29,7 @@ public class OrderRepositoryImpl implements OrderRepository {  // 도메인 모�
 
     // ID로 주문 조회 메서드
     @Override
-    public Optional<Order> findById(Long id) {
+    public Optional<Order> findById(UUID id) {
         return orderJpaRepository.findById(id)
                 .map(mapper::orderEntityToOrder);
     }

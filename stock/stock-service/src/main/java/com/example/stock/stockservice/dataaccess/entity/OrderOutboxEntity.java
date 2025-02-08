@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Builder
@@ -18,10 +19,9 @@ import java.util.UUID;
 @Entity
 public class OrderOutboxEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private UUID id;
 
-    private Long orderId;
+    private UUID orderId;
 
     private Long userId;
 
@@ -34,4 +34,18 @@ public class OrderOutboxEntity {
 
     @Enumerated(EnumType.STRING)
     private OutboxStatus outboxStatus;
+
+    // 엔티티 식별을 위한 equals와 hashCode
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderOutboxEntity that = (OrderOutboxEntity) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

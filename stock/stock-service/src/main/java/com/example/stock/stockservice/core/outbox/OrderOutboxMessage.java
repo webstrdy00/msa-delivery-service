@@ -10,11 +10,16 @@ import java.util.UUID;
 @Getter
 @Builder
 public class OrderOutboxMessage {   // outbox 패턴을 위한 메시지 도메인 모델
-    private Long id;
-    private Long orderId;
+    private UUID id;
+    private UUID orderId;
     private Long userId;
     private UUID productId;
     private int quantity;
     private OrderStatus orderStatus;    // 주문 상태
     private OutboxStatus outboxStatus;  // 메시지 처리 상태
+
+    public OrderOutboxMessage updateStatus(OutboxStatus outboxStatus) {
+        this.outboxStatus = outboxStatus;
+        return this;
+    }
 }
