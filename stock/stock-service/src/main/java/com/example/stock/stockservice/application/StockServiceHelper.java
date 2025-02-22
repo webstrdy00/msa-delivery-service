@@ -38,8 +38,8 @@ public class StockServiceHelper {   // 재고 서비스의 핵심 비즈니스 �
     // 4. 이벤트 발행
     @Transactional
     public Order buy(StockBuyCommand stockBuyCommand) {
-        // 재고 확인 및 감소 처리
-        checkQuantityAndDecrease(stockBuyCommand);
+        // 재고 검증 및 업데이트
+        checkQuantityAndUpdate(stockBuyCommand);
 
         // 주문 정보 저장 및 반환
         Order pandingOrder = orderRepository.save(
@@ -66,10 +66,10 @@ public class StockServiceHelper {   // 재고 서비스의 핵심 비즈니스 �
         return pandingOrder;
     }
 
-    // 분산 락을 사용한 재고 확인 및 감소 처리
+    // 분산 락을 사용한 재고 확인 및 업데이트 로직
     // @DistributedLock: Redis 기반 분산 락 적용
     @DistributedLock
-    private void checkQuantityAndDecrease(StockBuyCommand stockBuyCommand){
+    private void checkQuantityAndUpdate(StockBuyCommand stockBuyCommand){
         // 상품 ID로 재고 정보 조회, 없으면 예외 발생
         Stock stock = stockRepository.findById(stockBuyCommand.productId())
                 .orElseThrow(() -> new RuntimeException("Item Not Found"));
@@ -79,14 +79,9 @@ public class StockServiceHelper {   // 재고 서비스의 핵심 비즈니스 �
             throw new RuntimeException("Not available to buy");
         }
 
-        // 재고 확인 및 감소 처리
-        boolean updated = stockRepository.decreaseQuantity(
-                stockBuyCommand.productId(),
-                stock.getAvailableQuantity() - stockBuyCommand.quantity()
-        );
-
-        if (!updated) {
-            throw new RuntimeException("Out of Stock");
-        }
+        // 낙관적 락을 이용한 재고 업데이트
+        int updateQuantity = stock.getAvailableQuantity() - stockBuyCommand.quantity();
+        stock.updateAvailableQuantity(updateQuantity);
+        stockRepository.save(stock);
     }
 }

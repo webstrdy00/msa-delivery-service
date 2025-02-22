@@ -19,6 +19,7 @@ public class StockDataAccessMapper {   // 엔티티와 도메인 객체 간의 �
                 .price(stockEntity.getPrice())
                 .totalQuantity(stockEntity.getTotalQuantity())
                 .availableQuantity(stockEntity.getAvailableQuantity())
+                .version(stockEntity.getVersion())
                 .build();
     }
 
@@ -30,6 +31,7 @@ public class StockDataAccessMapper {   // 엔티티와 도메인 객체 간의 �
                 .price(stock.getPrice())
                 .totalQuantity(stock.getTotalQuantity())
                 .availableQuantity(stock.getAvailableQuantity())
+                .version(stock.getVersion())
                 .build();
     }
 

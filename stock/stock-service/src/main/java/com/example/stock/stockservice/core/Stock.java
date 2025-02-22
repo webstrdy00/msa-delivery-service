@@ -13,9 +13,16 @@ public class Stock {   // 재고 관리 도메인 클래스
     private int price;   // 가격
     private int totalQuantity;  // 총 재고 수량
     private int availableQuantity;  // 구매 가능한 재고 수량
+    private Long version;   // 낙관적 락
 
     // 요청된 수량만큼 구매 가능한지 확인하는 메서드
     public boolean isAvailableToBuy(int quantity) {
         return availableQuantity - quantity >= 0;   // 음수 재고 방지
+    }
+
+    // 재고 수량 업데이트 메서드 추가
+    public int updateAvailableQuantity(int quantity) {
+        this.availableQuantity = quantity;
+        return this.availableQuantity;
     }
 }
