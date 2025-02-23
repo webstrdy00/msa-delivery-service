@@ -9,11 +9,14 @@ import com.example.stock.stockservice.application.ports.output.OrderRepository;
 import com.example.stock.stockservice.application.ports.output.StockRepository;
 import com.example.stock.stockservice.core.Order;
 import com.example.stock.stockservice.core.Stock;
+import com.example.stock.stockservice.core.enums.OrderStatus;
 import com.example.stock.stockservice.core.outbox.OrderOutboxMessage;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
+
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Component
@@ -32,7 +35,7 @@ public class StockServiceHelper {   // 재고 서비스의 핵심 비즈니스 �
     }
 
     // 상품 구매 처리 메서드
-    // 1. 재고 확인 및 감소
+    // 1. 재고 검증 및 업데이트
     // 2. 주문 정보 저장
     // 3. Outbox 메시지 생성 및 저장
     // 4. 이벤트 발행
@@ -43,7 +46,7 @@ public class StockServiceHelper {   // 재고 서비스의 핵심 비즈니스 �
 
         // 주문 정보 저장 및 반환
         Order pandingOrder = orderRepository.save(
-                mapper.stockBuyCommandToOrder(stockBuyCommand)
+                createOrder(stockBuyCommand)
         );
 
         // Outbox 메시지 생성 및 저장
@@ -61,7 +64,7 @@ public class StockServiceHelper {   // 재고 서비스의 핵심 비즈니스 �
         );
 
         // 이벤트 발행 - 트랜잭션 완료 후 처리됨
-        publisher.publishEvent(mapper.stockBuyCommandToEvent(stockBuyCommand));
+        publisher.publishEvent(mapper.stockBuyCommandToEvent(stockBuyCommand, pandingOrder.getId()));
 
         return pandingOrder;
     }
@@ -83,5 +86,17 @@ public class StockServiceHelper {   // 재고 서비스의 핵심 비즈니스 �
         int updateQuantity = stock.getAvailableQuantity() - stockBuyCommand.quantity();
         stock.updateAvailableQuantity(updateQuantity);
         stockRepository.save(stock);
+    }
+
+    // 주문 생성 로직을 별도 메서드로 분리
+    private Order createOrder(StockBuyCommand stockBuyCommand) {
+        UUID id = UUID.randomUUID();    // 새로운 주문 ID 생성
+        return Order.builder()
+                .id(id)
+                .productId(stockBuyCommand.productId())
+                .userId(stockBuyCommand.userId())
+                .quantity(stockBuyCommand.quantity())
+                .orderStatus(OrderStatus.PENDING)   // 초기 상태를 PENDING
+                .build();
     }
 }

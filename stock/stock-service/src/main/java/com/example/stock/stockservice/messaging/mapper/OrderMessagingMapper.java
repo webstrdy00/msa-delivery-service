@@ -14,6 +14,7 @@ public class OrderMessagingMapper { // 메시징을 위한 도메인 이벤트�
     // - Avro 스키마에 맞게 데이터 구조화
     public OrderAvroModel stockBuyEventToOrderAvroModel(StockBuyEvent stockBuyEvent) {
         return OrderAvroModel.newBuilder()
+                .setOrderId(stockBuyEvent.getOrderId()) // 주문 ID 포함
                 .setProductId(stockBuyEvent.getProductId())
                 .setUserId(stockBuyEvent.getUserId())
                 .setQuantity(stockBuyEvent.getQuantity())
